@@ -1,9 +1,4 @@
-import { Controller } from "@hotwired/stimulus";
-// import { gsap } from "gsap";
 
-export default class extends Controller {
-  connect() {
-    console.log("plus_canvas controller connected");
     // let Plus = function () {
     //   this.x = 0;
     //   this.y = 0;
@@ -126,5 +121,11 @@ export default class extends Controller {
     //     }
     //   }
     // })
+import { Controller } from "@hotwired/stimulus";
+// import { gsap } from "gsap";
+
+export default class extends Controller {
+  connect() {
+    console.log("canvas controller connected");
   }
 }
