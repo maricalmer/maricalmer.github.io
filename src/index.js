@@ -30,6 +30,7 @@ Plus.prototype.draw = function (context) {
 }
 
 let c = document.getElementById("c");
+console.log(c);
 let context = c.getContext("2d");
 
 let signs = [];
