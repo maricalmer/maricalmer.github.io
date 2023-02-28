@@ -4,7 +4,7 @@ export default class extends Controller {
   static targets = ["input", "results"];
   connect() {
     console.log("movies controller connected");
-    this.fetchMovies("Harry Potter");
+    // this.fetchMovies("Harry Potter");
   }
 
   fetchMovies(query) {
@@ -25,6 +25,6 @@ export default class extends Controller {
   search(event) {
     event.preventDefault();
     this.resultsTarget.innerHTML = "";
-    this.fetchMovies(this.inputTarget.value);
+    // this.fetchMovies(this.inputTarget.value);
   }
 }
