@@ -6,7 +6,9 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <canvas id="c" width="500px" height="500px" data-controller="plus-canvas"></canvas>
+    <div data-controller="plus-canvas">
+      <canvas id="c" width="500px" height="500px"></canvas>
+    </div>
     <div class="col pt-1" data-controller="disable-button">
       <button class="btn btn-primary btn-lg" data-action="click->disable-button#disable"
         data-disable-button-target="button">
