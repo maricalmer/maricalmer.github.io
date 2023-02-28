@@ -8,16 +8,16 @@
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   </head>
   <body>
-    <div class="container text-center" data-controller="movies">
-      <form class="row g-2 justify-content-center py-5" data-action="submit->movies#search">
+    <div class="container text-center">
+      <form class="row g-2 justify-content-center py-5">
         <div class="col-4">
-          <input type="text" class="form-control" placeholder="Find movie" id="search-input" data-movies-target="input">
+          <input type="text" class="form-control" placeholder="Find movie" id="search-input">
         </div>
         <div class="col-1">
           <input type="submit" class="btn btn-primary">
         </div>
       </form>
-      <ul class="list-group list-group-horizontal" data-movies-target="results" data-controller="sortable" id="results"></ul>
+      <ul class="list-group list-group-horizontal" data-controller="sortable" id="results"></ul>
       <div class="row">
         <div class="col pt-1" data-controller="disable-button">
           <button class="btn btn-primary btn-lg" data-action="click->disable-button#disable" data-disable-button-target="button">
