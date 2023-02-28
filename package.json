@@ -1,10 +1,10 @@
 {
-  "name": "javascript-101",
+  "name": "maricalmer-portfolio",
   "version": "1.0.0",
-  "description": "Starting code for First JavaScript ES6 lecture",
+  "description": "Portfolio website",
   "main": "index.js",
-  "repository": "https://github.com/lewagon/webpack-boilerplate",
-  "author": "ssaunier",
+  "repository": "https://github.com/maricalmer/maricalmer.github.io",
+  "author": "maricalmer",
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.1.6",
