@@ -1,5 +1,6 @@
 node_modules
-dist
 .DS_Store
 package-lock.json
 yarn-error.log
+main.js
+main.js.map
