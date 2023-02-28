@@ -116,10 +116,12 @@ function mouseMove() {
 }
 
 c.addEventListener("mouseenter", function () {
+  console.log("in")
   mouseOver = true;
 })
 
 c.addEventListener("mouseleave", function () {
+  console.log("out")
   mouseOver = false;
   for (let i = 0; i < gridLength; i++) {
     for (let j = 0; j < gridLength; j++) {
