@@ -22,6 +22,7 @@
   "dependencies": {
     "@hotwired/stimulus": "^3.2.1",
     "@hotwired/stimulus-webpack-helpers": "^1.0.1",
+    "gsap": "^3.11.4",
     "sortablejs": "^1.15.0"
   }
 }
