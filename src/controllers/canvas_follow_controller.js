@@ -1,4 +1,3 @@
-
 import { gsap } from "gsap";
 
 let Plus = function () {
@@ -122,4 +121,4 @@ c.addEventListener("mouseleave", function () {
       gsap.to(sign, { duration: 0.3, x: 0, y: 0, scale: 1 });
     }
   }
-})
+});
