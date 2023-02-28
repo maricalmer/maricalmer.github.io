@@ -2,6 +2,7 @@ import { Controller } from "@hotwired/stimulus";
 // import { gsap } from "gsap";
 
 export default class extends Controller {
+
   connect() {
     console.log("canvas controller connected");
   }

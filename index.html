@@ -6,8 +6,8 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <div data-controller="canvas">
-      <canvas id="c" width="500px" height="500px" data-controller="sortable"></canvas>
+    <div data-controller="sortable">
+      <canvas id="c" width="500px" height="500px" data-controller="canvas"></canvas>
     </div>
     <div class="col pt-1" data-controller="disable-button">
       <button class="btn btn-primary btn-lg" data-action="click->disable-button#disable"
