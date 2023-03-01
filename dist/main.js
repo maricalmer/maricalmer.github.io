@@ -12839,10 +12839,11 @@ var _default = /*#__PURE__*/function (_Controller) {
   _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(_default, [{
     key: "connect",
     value: function connect() {
-      console.log("canvas controller connected"); // const c = this.element;
-      // const context = c.getContext("2d");
+      console.log("canvas controller connected");
 
-      var Plus = function Plus() {
+      var Plus = function Plus(x, y, left, top, width, height, scale) {
+        _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, Plus);
+
         this.x = 0;
         this.y = 0;
         this.left = 0;
@@ -12852,19 +12853,18 @@ var _default = /*#__PURE__*/function (_Controller) {
         this.scale = 1;
       };
 
-      Plus.prototype.draw = function (context) {
+      Plus.prototype.draw = function () {
         context.setTransform(this.scale, 0, 0, this.scale, this.left + this.x, this.top + this.y);
         context.moveTo(0, -this.height / 2);
         context.lineTo(0, this.height / 2);
         context.moveTo(-this.width / 2, 0);
         context.lineTo(this.width / 2, 0);
-      }; // let c = document.getElementById("c");
+      };
 
-
-      for (var i = 0; i < gridLength; i++) {
+      for (var i = 0; i < gridLength; i += 1) {
         signs[i] = [];
 
-        for (var j = 0; j < gridLength; j++) {
+        for (var j = 0; j < gridLength; j += 1) {
           var sign = new Plus();
           sign.left = c.width / (gridLength + 1) * (i + 1);
           sign.top = c.height / (gridLength + 1) * (j + 1);
@@ -12874,12 +12874,9 @@ var _default = /*#__PURE__*/function (_Controller) {
         }
       }
 
-      console.log(signs);
-      console.log(gsap__WEBPACK_IMPORTED_MODULE_6__["gsap"].ticker); // gsap.ticker.addEventListener("tick", draw);
-
       function calculateIconPosition() {
-        for (var _i = 0; _i < gridLength; _i++) {
-          for (var _j = 0; _j < gridLength; _j++) {
+        for (var _i = 0; _i < gridLength; _i += 1) {
+          for (var _j = 0; _j < gridLength; _j += 1) {
             var _sign = signs[_i][_j];
             var radius = 20;
             var dx = mouse.x - _sign.left;
@@ -12920,8 +12917,8 @@ var _default = /*#__PURE__*/function (_Controller) {
         context.save();
         context.beginPath();
 
-        for (var _i2 = 0; _i2 < gridLength; _i2++) {
-          for (var _j2 = 0; _j2 < gridLength; _j2++) {
+        for (var _i2 = 0; _i2 < gridLength; _i2 += 1) {
+          for (var _j2 = 0; _j2 < gridLength; _j2 += 1) {
             var _sign2 = signs[_i2][_j2];
 
             _sign2.draw(context);
@@ -12933,19 +12930,7 @@ var _default = /*#__PURE__*/function (_Controller) {
         context.stroke();
       }
 
-      gsap__WEBPACK_IMPORTED_MODULE_6__["gsap"].ticker.add(draw); // c.addEventListener("mousemove", mouseMove);
-      // c.addEventListener("mouseenter", function () {
-      //   mouseOver = true;
-      // })
-      // c.addEventListener("mouseleave", function () {
-      //   mouseOver = false;
-      //   for (let i = 0; i < gridLength; i++) {
-      //     for (let j = 0; j < gridLength; j++) {
-      //       let sign = signs[i][j];
-      //       gsap.to(sign, { duration: 0.3, x: 0, y: 0, scale: 1 });
-      //     }
-      //   }
-      // })
+      gsap__WEBPACK_IMPORTED_MODULE_6__["gsap"].ticker.add(draw);
     }
   }, {
     key: "mouseOverTrue",
@@ -12965,8 +12950,8 @@ var _default = /*#__PURE__*/function (_Controller) {
     value: function mouseOverFalse() {
       mouseOver = false;
 
-      for (var i = 0; i < gridLength; i++) {
-        for (var j = 0; j < gridLength; j++) {
+      for (var i = 0; i < gridLength; i += 1) {
+        for (var j = 0; j < gridLength; j += 1) {
           var sign = signs[i][j];
           gsap__WEBPACK_IMPORTED_MODULE_6__["gsap"].to(sign, {
             duration: 0.3,
