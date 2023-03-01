@@ -12814,6 +12814,16 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 
 
+var signs = [];
+var mouse = {
+  x: 0,
+  y: 0
+};
+var gridLength = 9;
+var mouseMoved = false;
+var mouseOver = false;
+var c = document.getElementById("c");
+var context = c.getContext("2d");
 
 var _default = /*#__PURE__*/function (_Controller) {
   _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_2___default()(_default, _Controller);
@@ -12829,7 +12839,8 @@ var _default = /*#__PURE__*/function (_Controller) {
   _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(_default, [{
     key: "connect",
     value: function connect() {
-      console.log("canvas controller connected");
+      console.log("canvas controller connected"); // const c = this.element;
+      // const context = c.getContext("2d");
 
       var Plus = function Plus() {
         this.x = 0;
@@ -12850,17 +12861,6 @@ var _default = /*#__PURE__*/function (_Controller) {
       }; // let c = document.getElementById("c");
 
 
-      var c = this.element;
-      var context = c.getContext("2d");
-      var signs = [];
-      var mouse = {
-        x: 0,
-        y: 0
-      };
-      var gridLength = 9;
-      var mouseMoved = false;
-      var mouseOver = false;
-
       for (var i = 0; i < gridLength; i++) {
         signs[i] = [];
 
@@ -12875,8 +12875,39 @@ var _default = /*#__PURE__*/function (_Controller) {
       }
 
       console.log(signs);
-      console.log(gsap__WEBPACK_IMPORTED_MODULE_6__["gsap"].ticker);
-      gsap__WEBPACK_IMPORTED_MODULE_6__["gsap"].ticker.add(draw); // gsap.ticker.addEventListener("tick", draw);
+      console.log(gsap__WEBPACK_IMPORTED_MODULE_6__["gsap"].ticker); // gsap.ticker.addEventListener("tick", draw);
+
+      function calculateIconPosition() {
+        for (var _i = 0; _i < gridLength; _i++) {
+          for (var _j = 0; _j < gridLength; _j++) {
+            var _sign = signs[_i][_j];
+            var radius = 20;
+            var dx = mouse.x - _sign.left;
+            var dy = mouse.y - _sign.top;
+            var dist = Math.sqrt(dx * dx + dy * dy) || 1;
+            var angle = Math.atan2(dy, dx);
+
+            if (dist < radius) {
+              radius = dist;
+              gsap__WEBPACK_IMPORTED_MODULE_6__["gsap"].to(_sign, {
+                duration: 0.3,
+                scale: 2
+              });
+            } else {
+              gsap__WEBPACK_IMPORTED_MODULE_6__["gsap"].to(_sign, {
+                duration: 0.3,
+                scale: 1
+              });
+            }
+
+            gsap__WEBPACK_IMPORTED_MODULE_6__["gsap"].to(_sign, {
+              duration: 0.3,
+              x: Math.cos(angle) * radius,
+              y: Math.sin(angle) * radius
+            });
+          }
+        }
+      }
 
       function draw() {
         if (mouseOver && mouseMoved) {
@@ -12889,11 +12920,11 @@ var _default = /*#__PURE__*/function (_Controller) {
         context.save();
         context.beginPath();
 
-        for (var _i = 0; _i < gridLength; _i++) {
-          for (var _j = 0; _j < gridLength; _j++) {
-            var _sign = signs[_i][_j];
+        for (var _i2 = 0; _i2 < gridLength; _i2++) {
+          for (var _j2 = 0; _j2 < gridLength; _j2++) {
+            var _sign2 = signs[_i2][_j2];
 
-            _sign.draw(context);
+            _sign2.draw(context);
           }
         }
 
@@ -12902,52 +12933,11 @@ var _default = /*#__PURE__*/function (_Controller) {
         context.stroke();
       }
 
-      function calculateIconPosition() {
-        for (var _i2 = 0; _i2 < gridLength; _i2++) {
-          for (var _j2 = 0; _j2 < gridLength; _j2++) {
-            var _sign2 = signs[_i2][_j2];
-            var radius = 20;
-            var dx = mouse.x - _sign2.left;
-            var dy = mouse.y - _sign2.top;
-            var dist = Math.sqrt(dx * dx + dy * dy) || 1;
-            var angle = Math.atan2(dy, dx);
-
-            if (dist < radius) {
-              radius = dist;
-              gsap__WEBPACK_IMPORTED_MODULE_6__["gsap"].to(_sign2, {
-                duration: 0.3,
-                scale: 2
-              });
-            } else {
-              gsap__WEBPACK_IMPORTED_MODULE_6__["gsap"].to(_sign2, {
-                duration: 0.3,
-                scale: 1
-              });
-            }
-
-            gsap__WEBPACK_IMPORTED_MODULE_6__["gsap"].to(_sign2, {
-              duration: 0.3,
-              x: Math.cos(angle) * radius,
-              y: Math.sin(angle) * radius
-            });
-          }
-        }
-      } // c.addEventListener("mousemove", mouseMove);
-
-
-      function mouseMove() {
-        var rect = c.getBoundingClientRect();
-        mouse.x = e.clientX - rect.left;
-        mouse.y = e.clientY - rect.top;
-        mouseMoved = true;
-      } // c.addEventListener("mouseenter", function () {
+      gsap__WEBPACK_IMPORTED_MODULE_6__["gsap"].ticker.add(draw); // c.addEventListener("mousemove", mouseMove);
+      // c.addEventListener("mouseenter", function () {
       //   mouseOver = true;
       // })
-
-
-      function mouseOverTrue() {
-        mouseOver = true;
-      } // c.addEventListener("mouseleave", function () {
+      // c.addEventListener("mouseleave", function () {
       //   mouseOver = false;
       //   for (let i = 0; i < gridLength; i++) {
       //     for (let j = 0; j < gridLength; j++) {
@@ -12956,21 +12946,34 @@ var _default = /*#__PURE__*/function (_Controller) {
       //     }
       //   }
       // })
+    }
+  }, {
+    key: "mouseOverTrue",
+    value: function mouseOverTrue() {
+      mouseOver = true;
+    }
+  }, {
+    key: "mouseMove",
+    value: function mouseMove(event) {
+      var rect = c.getBoundingClientRect();
+      mouse.x = event.clientX - rect.left;
+      mouse.y = event.clientY - rect.top;
+      mouseMoved = true;
+    }
+  }, {
+    key: "mouseOverFalse",
+    value: function mouseOverFalse() {
+      mouseOver = false;
 
-
-      function mouseOverFalse() {
-        mouseOver = false;
-
-        for (var _i3 = 0; _i3 < gridLength; _i3++) {
-          for (var _j3 = 0; _j3 < gridLength; _j3++) {
-            var _sign3 = signs[_i3][_j3];
-            gsap__WEBPACK_IMPORTED_MODULE_6__["gsap"].to(_sign3, {
-              duration: 0.3,
-              x: 0,
-              y: 0,
-              scale: 1
-            });
-          }
+      for (var i = 0; i < gridLength; i++) {
+        for (var j = 0; j < gridLength; j++) {
+          var sign = signs[i][j];
+          gsap__WEBPACK_IMPORTED_MODULE_6__["gsap"].to(sign, {
+            duration: 0.3,
+            x: 0,
+            y: 0,
+            scale: 1
+          });
         }
       }
     }

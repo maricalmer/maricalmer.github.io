@@ -1,10 +1,22 @@
 import { Controller } from "@hotwired/stimulus";
 import { gsap } from "gsap";
 
+let signs = [];
+let mouse = { x: 0, y: 0 };
+let gridLength = 9;
+let mouseMoved = false;
+let mouseOver = false;
+const c = document.getElementById("c");
+const context = c.getContext("2d");
+
 export default class extends Controller {
 
   connect() {
     console.log("canvas controller connected");
+
+    // const c = this.element;
+    // const context = c.getContext("2d");
+
     let Plus = function () {
       this.x = 0;
       this.y = 0;
@@ -18,9 +30,6 @@ export default class extends Controller {
       this.scale = 1;
     }
 
-
-
-
     Plus.prototype.draw = function (context) {
       context.setTransform(this.scale, 0, 0, this.scale, this.left + this.x, this.top + this.y);
 
@@ -31,15 +40,6 @@ export default class extends Controller {
       context.lineTo(this.width / 2, 0);
     }
     // let c = document.getElementById("c");
-    const c = this.element;
-    const context = c.getContext("2d");
-
-    let signs = [];
-    let mouse = { x: 0, y: 0 };
-    let gridLength = 9;
-
-    let mouseMoved = false;
-    let mouseOver = false;
 
     for (let i = 0; i < gridLength; i++) {
       signs[i] = [];
@@ -59,30 +59,7 @@ export default class extends Controller {
     console.log(signs);
     console.log(gsap.ticker);
 
-    gsap.ticker.add(draw);
     // gsap.ticker.addEventListener("tick", draw);
-
-    function draw() {
-      if (mouseOver && mouseMoved) {
-        calculateIconPosition();
-        mouseMoved = false;
-      }
-      calculateIconPosition();
-      context.clearRect(0, 0, c.width, c.height);
-      context.save();
-      context.beginPath();
-      for (let i = 0; i < gridLength; i++) {
-        for (let j = 0; j < gridLength; j++) {
-          let sign = signs[i][j];
-
-          sign.draw(context);
-        }
-      }
-      context.closePath();
-      context.restore();
-      context.stroke();
-    }
-
     function calculateIconPosition() {
       for (let i = 0; i < gridLength; i++) {
         for (let j = 0; j < gridLength; j++) {
@@ -110,22 +87,33 @@ export default class extends Controller {
       }
     }
 
-    // c.addEventListener("mousemove", mouseMove);
+    function draw() {
+      if (mouseOver && mouseMoved) {
+        calculateIconPosition();
+        mouseMoved = false;
+      }
+      calculateIconPosition();
+      context.clearRect(0, 0, c.width, c.height);
+      context.save();
+      context.beginPath();
+      for (let i = 0; i < gridLength; i++) {
+        for (let j = 0; j < gridLength; j++) {
+          let sign = signs[i][j];
 
-    function mouseMove() {
-      let rect = c.getBoundingClientRect();
-      mouse.x = e.clientX - rect.left;
-      mouse.y = e.clientY - rect.top;
-
-      mouseMoved = true;
+          sign.draw(context);
+        }
+      }
+      context.closePath();
+      context.restore();
+      context.stroke();
     }
+    gsap.ticker.add(draw);
+
+    // c.addEventListener("mousemove", mouseMove);
 
     // c.addEventListener("mouseenter", function () {
     //   mouseOver = true;
     // })
-    function mouseOverTrue() {
-      mouseOver = true;
-    }
 
     // c.addEventListener("mouseleave", function () {
     //   mouseOver = false;
@@ -136,18 +124,31 @@ export default class extends Controller {
     //     }
     //   }
     // })
-    function mouseOverFalse() {
-      mouseOver = false;
-      for (let i = 0; i < gridLength; i++) {
-        for (let j = 0; j < gridLength; j++) {
-          let sign = signs[i][j];
-          gsap.to(sign, {
-            duration: 0.3,
-            x: 0,
-            y: 0,
-            scale: 1
-          });
-        }
+  }
+
+  mouseOverTrue() {
+    mouseOver = true;
+  }
+
+  mouseMove(event) {
+    let rect = c.getBoundingClientRect();
+    mouse.x = event.clientX - rect.left;
+    mouse.y = event.clientY - rect.top;
+
+    mouseMoved = true;
+  }
+
+  mouseOverFalse() {
+    mouseOver = false;
+    for (let i = 0; i < gridLength; i++) {
+      for (let j = 0; j < gridLength; j++) {
+        let sign = signs[i][j];
+        gsap.to(sign, {
+          duration: 0.3,
+          x: 0,
+          y: 0,
+          scale: 1
+        });
       }
     }
   }
