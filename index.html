@@ -6,17 +6,7 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <div data-controller="sortable">
-      <canvas id="c" width="500px" height="500px" data-controller="canvas" data-action="mousemove->canvas#mouseMove mouseenter->canvas#mouseOverTrue mouseleave->canvas#mouseOverFalse"></canvas>
-    </div>
-    <div class="col pt-1" data-controller="disable-button">
-      <button class="btn btn-primary btn-lg" data-action="click->disable-button#disable"
-        data-disable-button-target="button">
-        Click me!
-      </button>
-      <a href="#" class="d-none ms-2" data-action="click->disable-button#reset" data-disable-button-target="link">Reset</a>
-    </div>
-
+    <canvas id="c" width="500px" height="500px" data-controller="canvas" data-action="mousemove->canvas#mouseMove mouseenter->canvas#mouseOverTrue mouseleave->canvas#mouseOverFalse"></canvas>
     <script src="dist/main.js"></script>
   </body>
 </html>
