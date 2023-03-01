@@ -4,9 +4,23 @@
     <meta charset="UTF-8">
     <title>Maricalmer - Portfolio</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&display=swap" rel="stylesheet">
   </head>
   <body>
-    <canvas id="c" width="500px" height="500px" data-controller="canvas" data-action="mousemove->canvas#mouseMove mouseenter->canvas#mouseOverTrue mouseleave->canvas#mouseOverFalse"></canvas>
+    <div class="canvas__container">
+      <canvas id="c" class="canvas__element" width="500px" height="500px" data-controller="canvas" data-action="resize@window->canvas#resizeCanvas touchmove->canvas#mouseMove touchstart->canvas#touchStart touchend->canvas#mouseOverFalse mousemove->canvas#mouseMove mouseenter->canvas#mouseOverTrue mouseleave->canvas#mouseOverFalse"></canvas>
+      <div class="canvas__title--container">
+        <h1 class="canvas__title--text">
+          maricalmer
+          <br>
+          builds stuff.
+        </h1>
+      </div>
+    </div>
+
+
     <script src="dist/main.js"></script>
   </body>
 </html>
