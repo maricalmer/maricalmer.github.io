@@ -9146,7 +9146,7 @@ c.height = window.innerHeight;
 var windowResizeDebouncing = null;
 var mouseMoveDebouncing = null;
 
-function registerMouseMove(event) {
+function registerCursorMove(event) {
   if (!mouseMoveDebouncing) {
     setTimeout(function () {
       if (event.targetTouches && event.targetTouches[0]) {
@@ -9178,8 +9178,6 @@ var _default = /*#__PURE__*/function (_Controller) {
   _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_2___default()(_default, [{
     key: "connect",
     value: function connect() {
-      console.log("canvas controller connected");
-
       var Plus = function Plus() {
         _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_1___default()(this, Plus);
 
@@ -9233,7 +9231,7 @@ var _default = /*#__PURE__*/function (_Controller) {
         return Math.sqrt(dx * dx + dy * dy) || 1;
       }
 
-      function calculateSigns() {
+      function calculateIconPosition() {
         for (var _i = 0; _i < gridLength; _i += 1) {
           for (var _j = 0; _j < gridLength; _j += 1) {
             var sign = signs[_i][_j];
@@ -9270,7 +9268,7 @@ var _default = /*#__PURE__*/function (_Controller) {
         context.strokeStyle = "white";
 
         if (mouseOver && mouseMoved) {
-          calculateSigns();
+          calculateIconPosition();
           mouseMoved = false;
         }
 
@@ -9292,13 +9290,13 @@ var _default = /*#__PURE__*/function (_Controller) {
   }, {
     key: "mouseMove",
     value: function mouseMove(event) {
-      registerMouseMove(event);
+      registerCursorMove(event);
     }
   }, {
     key: "touchStart",
     value: function touchStart(event) {
       mouseOver = true;
-      registerMouseMove(event);
+      registerCursorMove(event);
     }
   }, {
     key: "mouseOverFalse",
@@ -9340,7 +9338,7 @@ var _default = /*#__PURE__*/function (_Controller) {
           }
 
           windowResizeDebouncing = null;
-        }, 500);
+        }, 250);
       }
 
       windowResizeDebouncing = event;
