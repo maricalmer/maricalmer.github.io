@@ -14,9 +14,6 @@ export default class extends Controller {
   connect() {
     console.log("canvas controller connected");
 
-    // const c = this.element;
-    // const context = c.getContext("2d");
-
     let Plus = function () {
       this.x = 0;
       this.y = 0;
@@ -39,7 +36,6 @@ export default class extends Controller {
       context.moveTo(-this.width / 2, 0);
       context.lineTo(this.width / 2, 0);
     }
-    // let c = document.getElementById("c");
 
     for (let i = 0; i < gridLength; i++) {
       signs[i] = [];
@@ -59,7 +55,6 @@ export default class extends Controller {
     console.log(signs);
     console.log(gsap.ticker);
 
-    // gsap.ticker.addEventListener("tick", draw);
     function calculateIconPosition() {
       for (let i = 0; i < gridLength; i++) {
         for (let j = 0; j < gridLength; j++) {
@@ -108,22 +103,6 @@ export default class extends Controller {
       context.stroke();
     }
     gsap.ticker.add(draw);
-
-    // c.addEventListener("mousemove", mouseMove);
-
-    // c.addEventListener("mouseenter", function () {
-    //   mouseOver = true;
-    // })
-
-    // c.addEventListener("mouseleave", function () {
-    //   mouseOver = false;
-    //   for (let i = 0; i < gridLength; i++) {
-    //     for (let j = 0; j < gridLength; j++) {
-    //       let sign = signs[i][j];
-    //       gsap.to(sign, { duration: 0.3, x: 0, y: 0, scale: 1 });
-    //     }
-    //   }
-    // })
   }
 
   mouseOverTrue() {
