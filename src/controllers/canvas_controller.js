@@ -1,33 +1,34 @@
 import { Controller } from "@hotwired/stimulus";
 import { gsap } from "gsap";
 
-let signs = [];
-let mouse = { x: 0, y: 0 };
-let gridLength = 9;
+const signs = [];
+const mouse = { x: 0, y: 0 };
+const gridLength = 9;
 let mouseMoved = false;
 let mouseOver = false;
 const c = document.getElementById("c");
 const context = c.getContext("2d");
 
 export default class extends Controller {
-
   connect() {
     console.log("canvas controller connected");
 
-    let Plus = function () {
-      this.x = 0;
-      this.y = 0;
+    class Plus {
+      constructor(x, y, left, top, width, height, scale) {
+        this.x = 0;
+        this.y = 0;
 
-      this.left = 0;
-      this.top = 0;
+        this.left = 0;
+        this.top = 0;
 
-      this.width = 0;
-      this.height = 0;
+        this.width = 0;
+        this.height = 0;
 
-      this.scale = 1;
+        this.scale = 1;
+      }
     }
 
-    Plus.prototype.draw = function (context) {
+    Plus.prototype.draw = function () {
       context.setTransform(this.scale, 0, 0, this.scale, this.left + this.x, this.top + this.y);
 
       context.moveTo(0, -this.height / 2);
@@ -35,13 +36,13 @@ export default class extends Controller {
 
       context.moveTo(-this.width / 2, 0);
       context.lineTo(this.width / 2, 0);
-    }
+    };
 
-    for (let i = 0; i < gridLength; i++) {
+    for (let i = 0; i < gridLength; i += 1) {
       signs[i] = [];
 
-      for (let j = 0; j < gridLength; j++) {
-        let sign = new Plus();
+      for (let j = 0; j < gridLength; j += 1) {
+        const sign = new Plus();
 
         sign.left = c.width / (gridLength + 1) * (i + 1);
         sign.top = c.height / (gridLength + 1) * (j + 1);
@@ -52,19 +53,17 @@ export default class extends Controller {
         signs[i][j] = sign;
       }
     }
-    console.log(signs);
-    console.log(gsap.ticker);
 
     function calculateIconPosition() {
-      for (let i = 0; i < gridLength; i++) {
-        for (let j = 0; j < gridLength; j++) {
-          let sign = signs[i][j];
+      for (let i = 0; i < gridLength; i += 1) {
+        for (let j = 0; j < gridLength; j += 1) {
+          const sign = signs[i][j];
           let radius = 20;
-          let dx = mouse.x - sign.left;
-          let dy = mouse.y - sign.top;
-          let dist = Math.sqrt(dx * dx + dy * dy) || 1;
+          const dx = mouse.x - sign.left;
+          const dy = mouse.y - sign.top;
+          const dist = Math.sqrt(dx * dx + dy * dy) || 1;
 
-          let angle = Math.atan2(dy, dx);
+          const angle = Math.atan2(dy, dx);
 
           if (dist < radius) {
             radius = dist;
@@ -77,7 +76,7 @@ export default class extends Controller {
             duration: 0.3,
             x: Math.cos(angle) * radius,
             y: Math.sin(angle) * radius
-          })
+          });
         }
       }
     }
@@ -91,9 +90,9 @@ export default class extends Controller {
       context.clearRect(0, 0, c.width, c.height);
       context.save();
       context.beginPath();
-      for (let i = 0; i < gridLength; i++) {
-        for (let j = 0; j < gridLength; j++) {
-          let sign = signs[i][j];
+      for (let i = 0; i < gridLength; i += 1) {
+        for (let j = 0; j < gridLength; j += 1) {
+          const sign = signs[i][j];
 
           sign.draw(context);
         }
@@ -110,7 +109,7 @@ export default class extends Controller {
   }
 
   mouseMove(event) {
-    let rect = c.getBoundingClientRect();
+    const rect = c.getBoundingClientRect();
     mouse.x = event.clientX - rect.left;
     mouse.y = event.clientY - rect.top;
 
@@ -119,9 +118,9 @@ export default class extends Controller {
 
   mouseOverFalse() {
     mouseOver = false;
-    for (let i = 0; i < gridLength; i++) {
-      for (let j = 0; j < gridLength; j++) {
-        let sign = signs[i][j];
+    for (let i = 0; i < gridLength; i += 1) {
+      for (let j = 0; j < gridLength; j += 1) {
+        const sign = signs[i][j];
         gsap.to(sign, {
           duration: 0.3,
           x: 0,
