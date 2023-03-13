@@ -6,10 +6,10 @@ const mouse = { x: 0, y: 0 };
 const gridLength = 15;
 let mouseMoved = false;
 let mouseOver = false;
-const c = document.getElementById("c");
+const c = document.getElementById("canvas");
 const context = c.getContext("2d");
-c.width = window.innerWidth;
-c.height = window.innerHeight;
+// c.width = window.innerWidth / 1.5;
+// c.height = window.innerHeight / 1.5;
 let windowResizeDebouncing = null;
 let mouseMoveDebouncing = null;
 
@@ -59,11 +59,8 @@ export default class extends Controller {
       );
       context.lineWidth = 2;
 
-      context.moveTo(0, -this.height / 2);
-      context.lineTo(0, this.height / 2);
-
-      context.moveTo(-this.width / 2, 0);
-      context.lineTo(this.width / 2, 0);
+      context.moveTo(0, -1);
+      context.lineTo(0, 1);
 
       context.stroke();
       context.closePath();
@@ -77,8 +74,8 @@ export default class extends Controller {
         signs[i][j] = new Plus();
         signs[i][j].left = c.width / (gridLength + 1) * (i + 1);
         signs[i][j].top = c.height / (gridLength + 1) * (j + 1);
-        signs[i][j].width = min / 100;
-        signs[i][j].height = min / 100;
+        signs[i][j].width = 1;
+        signs[i][j].height = 1;
       }
     }
 
@@ -115,7 +112,7 @@ export default class extends Controller {
 
     function draw() {
       context.clearRect(0, 0, c.width, c.height);
-      context.strokeStyle = "white";
+      context.strokeStyle = "#CDC4A7";
 
       if (mouseOver && mouseMoved) {
         calculateIconPosition();
@@ -165,8 +162,8 @@ export default class extends Controller {
   resizeCanvas(event) {
     if (!windowResizeDebouncing) {
       setTimeout(() => {
-        c.width = window.innerWidth;
-        c.height = window.innerHeight;
+        // c.width = window.innerWidth;
+        // c.height = window.innerHeight;
         for (let i = 0; i < gridLength; i += 1) {
           for (let j = 0; j < gridLength; j += 1) {
             const min = Math.min(c.width, c.height);

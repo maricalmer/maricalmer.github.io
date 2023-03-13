@@ -6,21 +6,117 @@
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
   </head>
-  <body>
-    <div class="canvas__container">
-      <canvas id="c" class="canvas__element" width="500px" height="500px" data-controller="canvas" data-action="resize@window->canvas#resizeCanvas touchmove->canvas#mouseMove touchstart->canvas#touchStart touchend->canvas#mouseOverFalse mousemove->canvas#mouseMove mouseenter->canvas#mouseOverTrue mouseleave->canvas#mouseOverFalse"></canvas>
-      <div class="canvas__title--container">
-        <h1 class="canvas__title--text">
-          maricalmer
-          <br>
-          builds stuff.
-        </h1>
+  <body data-controller="cursor" data-action="mousemove->cursor#onMouseMove">
+    <div class="container">
+      <div class="cursor">
+        <div class="cursor__ball cursor__ball--big" data-cursor-target="big">
+          <svg height="30" width="30">
+            <circle cx="15" cy="15" r="12" stroke-width="0"></circle>
+          </svg>
+        </div>
+        <div class="cursor__ball cursor__ball--small" data-cursor-target="small">
+          <svg height="10" width="10">
+            <circle cx="5" cy="5" r="4" stroke-width="0"></circle>
+          </svg>
+        </div>
+      </div>
+      <div class="titles__container" data-controller="title" data-action="scroll@window->title#motionFirstPair scroll@window->title#motionSecondPair">
+        <div class="titles__wrapper">
+          <h1 class="titles__pair">
+            <span class="titles__title1" data-title-target="title1">maricalmer</span>
+            <span class="titles__shadow1">maricalmer</span>
+          </h1>
+          <h1 class="titles__pair">
+            <span class="titles__title2" data-title-target="title2">writes code</span>
+            <span class="titles__shadow2">writes code</span>
+          </h1>
+        </div>
+      </div>
+      <div class="content__container">
+        <div class="social__container">
+          <a href="https://github.com/maricalmer" target="_blank" class="social__text social__text--github social__text--link" data-cursor-target="hoverable"
+            data-action="mouseenter->cursor#onMouseHover mouseleave->cursor#onMouseHoverOut">github</a>
+          <a href="https://linkedin.com/in/maricalmer" target="_blank" class="social__text social__text--linkedin social__text--link" data-cursor-target="hoverable"
+            data-action="mouseenter->cursor#onMouseHover mouseleave->cursor#onMouseHoverOut">linkedin</a>
+        </div>
+        <div class="presentation__container">
+          <div class="presentation__text-wrapper">
+            <p class="presentation__text">
+              Full stack developer. Problem solver. Constant learner. I see programming as a way to build tools designed to make people's life easier.
+              You can see some of my projects further down. Currently living in Paris, France. Happy to
+              <a class="presentation__text presentation__text--link" data-cursor-target="hoverable" href="mailto:maricalmer@proton.me" data-action="mouseenter->cursor#onMouseHover mouseleave->cursor#onMouseHoverOut">chat</a>
+              !
+            </p>
+          </div>
+          <canvas id="canvas" class="presentation__canvas" width="500px" height="500px" data-controller="canvas"
+            data-action="resize@window->canvas#resizeCanvas touchmove->canvas#mouseMove touchstart->canvas#touchStart touchend->canvas#mouseOverFalse mousemove->canvas#mouseMove mouseenter->canvas#mouseOverTrue mouseleave->canvas#mouseOverFalse">
+          </canvas>
+          <svg class="presentation__arrow" xmlns="http://www.w3.org/2000/svg" width="67" height="67" viewBox="0 0 67 67" data-controller="arrow" data-action="scroll@window->arrow#toggleArrow">
+            <path class="presentation__arrow-path" d="M28 44L9.5 25.5L1.5 33.5L33.5 65.5L65.5 33.5L57.5 25.5L39 44V1H28V44Z"/>
+          </svg>
+        </div>
+        <div class="projects__container" data-controller="plus">
+          <div class="project__container project__container--infamous">
+            <div class="project__text-wrapper project__infamous-wrapper--animated-in" data-plus-target="wrapper" >
+              <div class="project__title-wrapper">
+                <svg class="project__icon" xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 128 128"
+                  fill="none">
+                  <polygon class="project__icon-path project__icon-path--minus"
+                    points="3 84, 2 84, 21 84, 45 84, 83 84, 104 84, 126 84, 126 46, 104 46, 83 46, 45 46, 21 46, 2 46, 2 84, 3 84"
+                    data-cursor-target="hoverable"
+                    data-action="click->plus#animeDescription mouseenter->cursor#onMouseHover mouseleave->cursor#onMouseHoverOut"
+                    data-project="infamous">
+                  </polygon>
+                </svg>
+                <h1 class="project__title">InfamousBerlin</h1>
+              </div>
+              <p class="project__description project__description--animated-in" data-plus-target="text">
+                A web application facilitating project collaborations in Berlin’s art scene. Users can connect, post a job offer, publish a portfolio, discover upcoming events... Run on Heroku
+                <br><br>
+                Stack: Ruby on Rails, HTML, SCSS, JavaScript, PostgreSQL
+                <br><br>
+                More on <a href="https://github.com/maricalmer/infamous-berlin" target="_blank" class="project__description project__description--link" data-cursor-target="hoverable" data-action="mouseenter->cursor#onMouseHover mouseleave->cursor#onMouseHoverOut">Github</a>.
+                Or visit <a href="https://infamousberlin.com" target="_blank"
+                  class="project__description project__description--link" data-cursor-target="hoverable"
+                  data-action="mouseenter->cursor#onMouseHover mouseleave->cursor#onMouseHoverOut">infamousberlin.com</a>
+              </p>
+            </div>
+          </div>
+          <div class="project__container project__container--portfolio">
+            <div class="project__text-wrapper project__portfolio-wrapper--animated-out">
+              <div class="project__title-wrapper">
+                <svg class="project__icon" xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 128 128"
+                  fill="none">
+                  <polygon class="project__icon-path project__icon-path--plus"
+                    points="2 47, 2 46, 2 84, 45 84, 45 127, 83 127, 83 84, 126 84, 126 46, 83 46, 83 3, 45 3, 45 46, 2 46, 2 47"
+                    data-cursor-target="hoverable"
+                    data-action="click->plus#animeDescription mouseenter->cursor#onMouseHover mouseleave->cursor#onMouseHoverOut"
+                    data-project="portfolio">
+                  </polygon>
+                </svg>
+                <h1 class="project__title">Portfolio website</h1>
+              </div>
+              <p class="project__description project__description--animated-out" data-plus-target="text">
+                Current webpage. Static portfolio website hosted on Github Pages
+                <br><br>
+                Stack: HTML, CSS, JavaScript
+                <br><br>
+                More on <a href="https://github.com/maricalmer/maricalmer.github.io" target="_blank"
+                  class="project__description project__description--link" data-cursor-target="hoverable"
+                  data-action="mouseenter->cursor#onMouseHover mouseleave->cursor#onMouseHoverOut">Github</a>
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-
-
+    <div class="footer__container">
+      <div class="footer__text">say hi at maricalmer@proton.me</div>
+      <div class="footer__text">© 2023 maricalmer</div>
+    </div>
     <script src="dist/main.js"></script>
   </body>
 </html>
