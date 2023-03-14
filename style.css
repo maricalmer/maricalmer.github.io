@@ -149,11 +149,12 @@ circle {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  height: 100vh;
   width: 100%;
 }
 
 .presentation__text-wrapper {
-  margin: 80% auto 0 auto;
+  margin: 10vh auto;
   width: 390px;
 }
 
@@ -178,8 +179,8 @@ circle {
 .presentation__canvas {
   touch-action: none;
   position: absolute;
-  bottom: 80%;
-  left: 10%;
+  bottom: 150px;
+  left: 250px;
   z-index: 1;
 }
 
@@ -330,7 +331,7 @@ circle {
 }
 
 .project__text-wrapper--mobile {
-  left: 50px;
+  left: 100px;
 }
 /* .project__text-wrapper--show {
   height: fit-content;
@@ -565,7 +566,7 @@ circle {
   font-family: 'IBM Plex Mono', monospace;
   font-size: 1.1rem;
   color: #CDC4A7;
-  width: 300px;
+  width: 500px;
 }
 
 .project__description--link {
@@ -674,7 +675,16 @@ circle {
   }
 }
 
-@media only (min-width: 720px) {
+
+
+
+
+
+@media only screen and (min-width: 435px) {
+
+}
+
+@media only screen and (min-width: 720px) {
   .container {
     display: flex;
   }
@@ -686,6 +696,9 @@ circle {
   }
   .content__container {
     width: calc(100vw - 250px);
+  }
+  .project__description {
+    width: 300px;
   }
   .presentation__arrow {
     display: block;
@@ -699,31 +712,15 @@ circle {
   .titles__pair {
     font-size: 14vh;
   }
-  .presentation__container {
-    height: 100vh;
-  }
-  .presentation__canvas {
-    bottom: 150px;
-    left: 250px;
-  }
-  .presentation__text-wrapper {
-    margin: 10vh auto;
-  }
-  .presentation__canvas {
-    bottom: 15%;
-  }
-  .project__text-wrapper--mobile {
-    left: 100px;
-  }
 }
 
-@media (min-width: 920px) {
+@media only screen and (min-width: 920px) {
   .project__description {
     width: 500px;
   }
 }
 
-@media (min-width: 1090px) {
+@media only screen and (min-width: 1090px) {
   .presentation__text-wrapper {
     position: absolute;
     bottom: 32%;
@@ -738,7 +735,7 @@ circle {
   }
 }
 
-@media (min-width: 1200px) {
+@media only screen and (min-width: 1200px) {
   .project__description {
     width: 700px;
   }
@@ -752,12 +749,12 @@ circle {
 
 }
 
-@media (min-width: 1450px) {
+@media only screen and (min-width: 1450px) {
   .projects__container {
     padding-left: 10vw;
   }
 }
-@media (min-width: 1800px) {
+@media only screen and (min-width: 1800px) {
   .titles__title2 {
     top: 135px;
   }
