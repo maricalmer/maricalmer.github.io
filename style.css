@@ -51,7 +51,7 @@ circle {
   transform: rotate(-90deg);
   transform-origin: top left;
   position: absolute;
-  bottom: 20px;
+  bottom: 30px;
 }
 
 .titles__pair {
