@@ -29,16 +29,12 @@ circle {
 }
 
 .container {
-  display: flex;
   height: 100%;
 }
 
 .titles__container {
-  /* background-color: green; */
-  position: sticky;
-  width: 250px;
-  height: 100vh;
-  top: 0;
+  position: absolute;
+  top: 15%;
 }
 
 .titles__position {
@@ -47,18 +43,12 @@ circle {
   height: 100%;
 }
 
-.titles__wrapper {
-  transform: rotate(-90deg);
-  transform-origin: top left;
-  position: absolute;
-  bottom: 30px;
-}
 
 .titles__pair {
   font-family: 'Archivo Black', sans-serif;
   font-weight: 400;
   /* font-size: 7rem; */
-  font-size: 14vh;
+  font-size: 14vw;
   margin: 0;
   color: #C38212;
 }
@@ -114,7 +104,7 @@ circle {
 
 .content__container {
   height: fit-content;
-  width: calc(100vw - 250px);
+  width: 100%;
   overflow: hidden;
 }
 
@@ -159,14 +149,11 @@ circle {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  height: 100vh;
   width: 100%;
 }
 
 .presentation__text-wrapper {
-  position: absolute;
-  bottom: 32%;
-  right: 450px;
+  margin: 80% auto 0 auto;
   width: 390px;
 }
 
@@ -191,12 +178,13 @@ circle {
 .presentation__canvas {
   touch-action: none;
   position: absolute;
-  bottom: -200px;
-  right: 200px;
+  bottom: 80%;
+  left: 10%;
   z-index: 1;
 }
 
 .presentation__arrow {
+  display: none;
   position: fixed;
   bottom: 30px;
   right: 20px;
@@ -269,7 +257,6 @@ circle {
   width: 100%;
   margin-top: 300px;
   margin-bottom: 150px;
-  padding-left: 10vw;
 }
 
 .project__container {
@@ -282,6 +269,10 @@ circle {
 
 .project__container--portfolio {
   min-height: 270px;
+}
+
+.project__container--desktop {
+  display: none;
 }
 
 .project__container:hover .project__icon {
@@ -338,6 +329,9 @@ circle {
   padding: 1rem 2rem;
 }
 
+.project__text-wrapper--mobile {
+  left: 50px;
+}
 /* .project__text-wrapper--show {
   height: fit-content;
 }
@@ -571,7 +565,7 @@ circle {
   font-family: 'IBM Plex Mono', monospace;
   font-size: 1.1rem;
   color: #CDC4A7;
-  width: 700px;
+  width: 300px;
 }
 
 .project__description--link {
@@ -680,29 +674,90 @@ circle {
   }
 }
 
+@media only (min-width: 720px) {
+  .container {
+    display: flex;
+  }
+  .titles__wrapper {
+    transform: rotate(-90deg);
+    transform-origin: top left;
+    position: absolute;
+    bottom: 30px;
+  }
+  .content__container {
+    width: calc(100vw - 250px);
+  }
+  .presentation__arrow {
+    display: block;
+  }
+  .titles__container {
+    position: sticky;
+    height: 100vh;
+    width: 250px;
+    top: 0;
+  }
+  .titles__pair {
+    font-size: 14vh;
+  }
+  .presentation__container {
+    height: 100vh;
+  }
+  .presentation__canvas {
+    bottom: 150px;
+    left: 250px;
+  }
+  .presentation__text-wrapper {
+    margin: 10vh auto;
+  }
+  .presentation__canvas {
+    bottom: 15%;
+  }
+  .project__text-wrapper--mobile {
+    left: 100px;
+  }
+}
 
+@media (min-width: 920px) {
+  .project__description {
+    width: 500px;
+  }
+}
 
+@media (min-width: 1090px) {
+  .presentation__text-wrapper {
+    position: absolute;
+    bottom: 32%;
+    right: 450px;
+    margin: 0;
+  }
+  .presentation__canvas {
+    position: absolute;
+    bottom: -200px;
+    right: 200px;
+    left: unset;
+  }
+}
 
+@media (min-width: 1200px) {
+  .project__description {
+    width: 700px;
+  }
+  .project__container--mobile {
+    display: none;
+  }
 
-
-@media only screen and (min-width: 435px) {
+  .project__container--desktop {
+    display: block;
+  }
 
 }
 
-@media only screen and (min-width: 640px) {
-
-}
-
-@media only screen and (min-width: 850px) {
-
-}
-
-@media only screen and (min-width: 1450px) {
+@media (min-width: 1450px) {
   .projects__container {
     padding-left: 10vw;
   }
 }
-@media only screen and (min-width: 1800px) {
+@media (min-width: 1800px) {
   .titles__title2 {
     top: 135px;
   }
