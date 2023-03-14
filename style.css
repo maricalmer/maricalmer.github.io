@@ -36,14 +36,22 @@ circle {
 .titles__container {
   /* background-color: green; */
   position: sticky;
-  min-width: 250px;
+  width: 250px;
   height: 100vh;
   top: 0;
+}
+
+.titles__position {
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
 .titles__wrapper {
   transform: rotate(-90deg);
   transform-origin: top left;
+  position: absolute;
+  bottom: 20px;
 }
 
 .titles__pair {
@@ -69,13 +77,12 @@ circle {
 .titles__title1 {
   position: absolute;
   top: 0;
-  right: 289px;
 }
 
 .titles__title2 {
   position: absolute;
   top: 110px;
-  right: 255px;
+  left: 5px;
   white-space: nowrap;
 }
 
@@ -83,7 +90,6 @@ circle {
   color: transparent;
   position: absolute;
   top: 0;
-  right: 289px;
   -webkit-text-fill-color: transparent;
   -webkit-text-stroke: 1px #F0D967;
   opacity: .25;
@@ -96,7 +102,7 @@ circle {
   color: transparent;
   position: absolute;
   top: 110px;
-  right: 255px;
+  left: 5px;
   -webkit-text-fill-color: transparent;
   -webkit-text-stroke: 1px #F0D967;
   opacity: .25;
