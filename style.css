@@ -269,6 +269,7 @@ circle {
   width: 100%;
   margin-top: 300px;
   margin-bottom: 150px;
+  padding-left: 10vw;
 }
 
 .project__container {
@@ -694,4 +695,21 @@ circle {
 
 @media only screen and (min-width: 850px) {
 
+}
+
+@media only screen and (min-width: 1450px) {
+  .projects__container {
+    padding-left: 10vw;
+  }
+}
+@media only screen and (min-width: 1800px) {
+  .titles__title2 {
+    top: 135px;
+  }
+  .titles__shadow2 {
+    top: 135px;
+  }
+  .presentation__canvas {
+    bottom: -100px;
+  }
 }
