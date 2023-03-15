@@ -10486,7 +10486,6 @@ function hideArrow(arrow) {
 }
 
 function showArrow(arrow) {
-  console.log("event fired");
   arrow.classList.remove("presentation__arrow--hidden");
 }
 
