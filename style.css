@@ -178,7 +178,6 @@ circle {
 .presentation__text {
   font-size: 4vw;
   text-align: justify;
-  line-height: 27px;
 }
 
 .presentation__text--link {
@@ -729,6 +728,7 @@ circle {
   }
   .presentation__text {
     font-size: 1.1rem;
+    line-height: 27px;
   }
   .titles__container {
     width: 250px;
