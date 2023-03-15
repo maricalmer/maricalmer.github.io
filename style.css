@@ -176,7 +176,7 @@ circle {
 }
 
 .presentation__text {
-  font-size: 1.1rem;
+  font-size: 4vw;
   text-align: justify;
   line-height: 27px;
 }
@@ -724,6 +724,9 @@ circle {
     width: 390px;
     position: unset;
   }
+  .presentation__text {
+    font-size: 1.1rem;
+  }
   .titles__container {
     width: 250px;
   }
@@ -731,16 +734,13 @@ circle {
     bottom: 30px;
   }
   .titles__pair {
-    font-size: 14vh;
+    font-size: 10vh;
   }
   .titles__title2 {
-    left: 110px;
+    top: 130px;
   }
   .titles__shadow2 {
-    left: 110px;
-  }
-  .footer__container {
-    margin: 20px 0;
+    top: 130px;
   }
 }
 
@@ -751,6 +751,9 @@ circle {
 }
 
 @media(min-width: 1090px) {
+  .titles__pair {
+      font-size: 14vh;
+    }
   .presentation__text-wrapper {
     position: absolute;
     bottom: 32%;
@@ -762,6 +765,9 @@ circle {
     bottom: -200px;
     right: 200px;
     left: unset;
+  }
+  .footer__container {
+    margin: 20px 0;
   }
 }
 
