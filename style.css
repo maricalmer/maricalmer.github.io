@@ -653,7 +653,7 @@ circle {
 }
 
 .footer__container {
-  margin: 20px 0;
+  margin: 100px 0 10px 0;
 }
 
 @-webkit-keyframes fadeinuptext {
@@ -697,18 +697,9 @@ circle {
   body {
     cursor: none;
   }
-  /* .container {
-    display: flex;
-  } */
   .cursor {
     display: block;
   }
-  /* .titles__wrapper {
-    transform: rotate(-90deg);
-    transform-origin: top left;
-    position: absolute;
-    bottom: 30px;
-  } */
   .content__container {
     width: calc(100vw - 250px);
   }
@@ -734,10 +725,7 @@ circle {
     position: unset;
   }
   .titles__container {
-    /* position: sticky; */
-    /* height: 100vh; */
     width: 250px;
-    /* top: 0; */
   }
   .titles__pair {
     font-size: 14vh;
@@ -747,6 +735,9 @@ circle {
   }
   .titles__shadow2 {
     left: 110px;
+  }
+  .footer__container {
+    margin: 20px 0;
   }
 }
 
