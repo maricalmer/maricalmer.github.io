@@ -723,6 +723,7 @@ circle {
     margin: 10vh auto;
     width: 390px;
     position: unset;
+    top: unset;
   }
   .presentation__text {
     font-size: 1.1rem;
