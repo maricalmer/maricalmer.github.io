@@ -349,6 +349,8 @@ circle {
 
 .project__text-wrapper--mobile {
   left: 0px;
+  padding: 1rem;
+  margin-left: 1rem;
 }
 /* .project__text-wrapper--show {
   height: fit-content;
