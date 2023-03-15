@@ -55,7 +55,7 @@ circle {
   transform: rotate(-90deg);
   transform-origin: top left;
   position: absolute;
-  bottom: 30px;
+  bottom: 50px;
 }
 
 .titles__pair {
@@ -726,6 +726,9 @@ circle {
   }
   .titles__container {
     width: 250px;
+  }
+  .titles__wrapper {
+    bottom: 30px;
   }
   .titles__pair {
     font-size: 14vh;
