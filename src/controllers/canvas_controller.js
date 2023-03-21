@@ -8,8 +8,6 @@ let mouseMoved = false;
 let mouseOver = false;
 const c = document.getElementById("canvas");
 const context = c.getContext("2d");
-// c.width = window.innerWidth / 1.5;
-// c.height = window.innerHeight / 1.5;
 let windowResizeDebouncing = null;
 let mouseMoveDebouncing = null;
 
@@ -112,7 +110,7 @@ export default class extends Controller {
 
     function draw() {
       context.clearRect(0, 0, c.width, c.height);
-      context.strokeStyle = "#CDC4A7";
+      context.strokeStyle = "#BAB196";
 
       if (mouseOver && mouseMoved) {
         calculateIconPosition();
@@ -162,8 +160,6 @@ export default class extends Controller {
   resizeCanvas(event) {
     if (!windowResizeDebouncing) {
       setTimeout(() => {
-        // c.width = window.innerWidth;
-        // c.height = window.innerHeight;
         for (let i = 0; i < gridLength; i += 1) {
           for (let j = 0; j < gridLength; j += 1) {
             const min = Math.min(c.width, c.height);

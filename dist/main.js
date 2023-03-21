@@ -10708,7 +10708,7 @@ var _default = /*#__PURE__*/function (_Controller) {
 
       function draw() {
         context.clearRect(0, 0, c.width, c.height);
-        context.strokeStyle = "#CDC4A7";
+        context.strokeStyle = "#BAB196";
 
         if (mouseOver && mouseMoved) {
           calculateIconPosition();

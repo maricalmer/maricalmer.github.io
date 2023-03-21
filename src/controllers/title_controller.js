@@ -25,21 +25,4 @@ export default class extends Controller {
       delay: 1
     });
   }
-
-  // motionFirstShadow() {
-  //   const scrollTop = document.documentElement.scrollTop * 0.2;
-  //   anime({
-  //     targets: '.titles__shadow1',
-  //     translateX: -scrollTop,
-  //     delay: 2
-  //   });
-  // }
-  // motionSecondShadow() {
-  //   const scrollTop = document.documentElement.scrollTop * 0.2;
-  //   anime({
-  //     targets: '.titles__shadow2',
-  //     translateX: scrollTop,
-  //     delay: 1
-  //   });
-  // }
 }
