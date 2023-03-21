@@ -1,53 +1,59 @@
-## Requirements
+### [maricalmer.com](https://maricalmer.com), a portfolio website to showcase web development projects
 
-You must have Node and Yarn installed on your computer [with the same versions than in our setup](https://github.com/lewagon/setup/blob/master/macos.md#nodejs). Check it with: 
+## Static website
+Website developed with HTML, CSS, Javascript and supported by the Stimulus framework. Assets are bundled with Webpack. Application is run on Github Pages.
+
+![HTML](https://img.shields.io/badge/HTML-5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS](https://img.shields.io/badge/CSS-3-264DE4?style=for-the-badge&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-ES6-yellow?style=for-the-badge&logo=javascript&logoColor=white)
+![Stimulus](https://img.shields.io/badge/stimulus-3-77E8B9?style=for-the-badge&logo=stimulus&logoColor=white)
+
+## JS Packages (non exhaustive)
+
+[![gsap](https://img.shields.io/badge/gsap-3.11.4-yellow.svg)](https://yarnpkg.com/package/gsap)
+[![animejs](https://img.shields.io/badge/animejs-3.2.1-yellow.svg)](https://yarnpkg.com/package/animejs)
+
+
+## Run Locally
+
+Clone the project
 
 ```bash
-node -v
-yarn -v
-# Compare the versions with the ones in the setup
+  git clone git@github.com:maricalmer/maricalmer.github.io.git my-project
 ```
 
-If it's not the case, go back to the dedicated section of the [macOS](https://github.com/lewagon/setup/blob/master/macos.md#nodejs), [Windows](https://github.com/lewagon/setup/blob/master/windows.md#installing-some-gems) or [Ubuntu](https://github.com/lewagon/setup/blob/master/ubuntu.md#installing-some-gems) setup.
-
-## Installation
-
-First clone this repository to your laptop:
+Go to the project directory and remove git logs
 
 ```bash
-cd ~/code/<your_github_nickname>
-git clone git@github.com:lewagon/webpack-boilerplate.git my-js-project
-cd my-js-project
-rm -rf .git
-yarn install
-code . # Open this folder in your text editor
+  cd my-project
+  rm -rf .git
 ```
 
-Make sure you have `./node_modules/.bin` in your `$PATH`:
+Install dependencies
 
 ```bash
-echo $PATH
-# You should see `./node_modules/.bin` in the list
+  bundle install
+  yarn install
 ```
 
-If it's not the case, add it: 
+Make sure you have ./node_modules/.bin in your $PATH:
 
 ```bash
-cd ~/code/dotfiles/<your_github_nickname>
-echo 'export PATH="./bin:./node_modules/.bin:${PATH}"' >> zshrc
-cd ~/code/<your_github_nickname>/my-js-project
-source ~/.zshrc
+  echo $PATH
+  # You should see `./node_modules/.bin` in the list
 ```
 
-This way you can run:
+If it's not the case, add it:
 
 ```bash
-eslint lib
-webpack-dev-server
+  cd ~/code/dotfiles/<your_github_nickname>
+  echo 'export PATH="./bin:./node_modules/.bin:${PATH}"' >> zshrc
+  cd ~/code/<your_github_nickname>/my-project
+  source ~/.zshrc
 ```
 
-Once a file has been updated in your text editor, you can run it with:
+Start the server
 
 ```bash
-node lib/01_types.js
+  webpack-dev-server
 ```
