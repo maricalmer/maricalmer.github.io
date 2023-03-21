@@ -35,20 +35,11 @@ function animeText(button) {
 }
 
 function animeWrapper(button) {
-  if (button.dataset.project === "infamous") {
-    button.parentElement.parentElement.parentElement.classList.toggle("project__infamous-wrapper--animated-in");
-    button.parentElement.parentElement.parentElement.classList.toggle("project__infamous-wrapper--animated-out");
-  } else if (button.dataset.project === "portfolio") {
-    button.parentElement.parentElement.parentElement.classList.toggle("project__portfolio-wrapper--animated-in");
-    button.parentElement.parentElement.parentElement.classList.toggle("project__portfolio-wrapper--animated-out");
-  }
+  button.parentElement.parentElement.parentElement.classList.toggle(`project__${button.dataset.project}-wrapper--animated-in`);
+  button.parentElement.parentElement.parentElement.classList.toggle(`project__${button.dataset.project}-wrapper--animated-out`);
 }
 
 export default class extends Controller {
-  connect() {
-    console.log("plus controller is connected");
-  }
-
   animeDescription(event) {
     if (event.currentTarget.classList.contains("project__icon-path--plus")) {
       morphToMinus(event.currentTarget);

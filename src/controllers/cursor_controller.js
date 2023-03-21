@@ -3,9 +3,7 @@ import { gsap } from "gsap";
 
 export default class extends Controller {
   static targets = ["big", "small", "hoverable"];
-  connect() {
-    console.log("cursor controller is connected");
-  }
+
   onMouseMove(event) {
     gsap.to(this.bigTarget, {
       duration: 0.4,

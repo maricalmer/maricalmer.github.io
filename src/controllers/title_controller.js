@@ -3,9 +3,6 @@ import anime from 'animejs/lib/anime.es.js';
 
 export default class extends Controller {
   static targets = ["title1", "title2"];
-  connect() {
-    console.log("title controller is connected");
-  }
 
   motionFirstPair(event) {
     const scrollTop = document.documentElement.scrollTop * 0.1;

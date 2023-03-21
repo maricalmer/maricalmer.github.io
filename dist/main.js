@@ -10503,22 +10503,17 @@ var _default = /*#__PURE__*/function (_Controller) {
   }
 
   _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(_default, [{
-    key: "connect",
-    value: function connect() {
-      console.log("arrow controller is connected");
-    }
-  }, {
     key: "toggleArrow",
     value: function toggleArrow(event) {
       var _this = this;
 
       var documentHeight = document.body.scrollHeight;
       var currentScroll = window.scrollY + window.innerHeight;
-      var modifier = 100;
+      var bottomNoArrowZone = 100;
 
       if (!scrollDebouncing) {
         setTimeout(function () {
-          if (currentScroll + modifier > documentHeight) {
+          if (currentScroll + bottomNoArrowZone > documentHeight) {
             hideArrow(_this.element);
           } else {
             showArrow(_this.element);
@@ -10576,7 +10571,7 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 
 
-var signs = [];
+var dots = [];
 var mouse = {
   x: 0,
   y: 0
@@ -10584,11 +10579,8 @@ var mouse = {
 var gridLength = 15;
 var mouseMoved = false;
 var mouseOver = false;
-var c = document.getElementById("canvas");
-var context = c.getContext("2d"); // c.width = window.innerWidth / 1.5;
-// c.height = window.innerHeight / 1.5;
-
-var windowResizeDebouncing = null;
+var canvas = document.querySelector("canvas");
+var context = canvas.getContext("2d");
 var mouseMoveDebouncing = null;
 
 function registerCursorMove(event) {
@@ -10598,7 +10590,7 @@ function registerCursorMove(event) {
         event = event.targetTouches[0];
       }
 
-      var rect = c.getBoundingClientRect();
+      var rect = canvas.getBoundingClientRect();
       mouse.x = event.clientX - rect.left;
       mouse.y = event.clientY - rect.top;
       mouseMoved = true;
@@ -10623,19 +10615,19 @@ var _default = /*#__PURE__*/function (_Controller) {
   _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_2___default()(_default, [{
     key: "connect",
     value: function connect() {
-      var Plus = function Plus() {
-        _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_1___default()(this, Plus);
+      var Dot = function Dot() {
+        _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_1___default()(this, Dot);
 
         this.x = 0;
         this.y = 0;
         this.left = 0;
         this.top = 0;
-        this.width = 0;
-        this.height = 0;
+        this.width = 1;
+        this.height = 1;
         this.scale = 1;
       };
 
-      Plus.prototype.draw = function drawing() {
+      Dot.prototype.draw = function drawing() {
         context.save();
         context.beginPath();
         context.setTransform(this.scale, 0, 0, this.scale, this.left + this.x, this.top + this.y);
@@ -10648,15 +10640,12 @@ var _default = /*#__PURE__*/function (_Controller) {
       };
 
       for (var i = 0; i < gridLength; i += 1) {
-        signs[i] = [];
+        dots[i] = [];
 
         for (var j = 0; j < gridLength; j += 1) {
-          var min = Math.min(c.width, c.height);
-          signs[i][j] = new Plus();
-          signs[i][j].left = c.width / (gridLength + 1) * (i + 1);
-          signs[i][j].top = c.height / (gridLength + 1) * (j + 1);
-          signs[i][j].width = 1;
-          signs[i][j].height = 1;
+          dots[i][j] = new Dot();
+          dots[i][j].left = canvas.width / (gridLength + 1) * (i + 1);
+          dots[i][j].top = canvas.height / (gridLength + 1) * (j + 1);
         }
       }
 
@@ -10677,27 +10666,27 @@ var _default = /*#__PURE__*/function (_Controller) {
       function calculateIconPosition() {
         for (var _i = 0; _i < gridLength; _i += 1) {
           for (var _j = 0; _j < gridLength; _j += 1) {
-            var sign = signs[_i][_j];
-            var hyp = Math.min(c.width, c.height) / (gridLength + 1) / 2;
-            var d = dist([sign.left, sign.top], [mouse.x, mouse.y]);
-            var ax = mouse.x - sign.left;
-            var ay = mouse.y - sign.top;
+            var dot = dots[_i][_j];
+            var hyp = Math.min(canvas.width, canvas.height) / (gridLength + 1) / 2;
+            var d = dist([dot.left, dot.top], [mouse.x, mouse.y]);
+            var ax = mouse.x - dot.left;
+            var ay = mouse.y - dot.top;
             var angle = Math.atan2(ay, ax);
 
-            if (d < hyp + sign.width) {
+            if (d < hyp + dot.width) {
               hyp = d;
-              gsap__WEBPACK_IMPORTED_MODULE_7__["gsap"].to(sign, {
+              gsap__WEBPACK_IMPORTED_MODULE_7__["gsap"].to(dot, {
                 duration: 0.3,
                 scale: 2
               });
             } else {
-              gsap__WEBPACK_IMPORTED_MODULE_7__["gsap"].to(sign, {
+              gsap__WEBPACK_IMPORTED_MODULE_7__["gsap"].to(dot, {
                 duration: 0.3,
                 scale: 1
               });
             }
 
-            gsap__WEBPACK_IMPORTED_MODULE_7__["gsap"].to(sign, {
+            gsap__WEBPACK_IMPORTED_MODULE_7__["gsap"].to(dot, {
               duration: 0.3,
               x: Math.cos(angle) * hyp,
               y: Math.sin(angle) * hyp
@@ -10707,7 +10696,7 @@ var _default = /*#__PURE__*/function (_Controller) {
       }
 
       function draw() {
-        context.clearRect(0, 0, c.width, c.height);
+        context.clearRect(0, 0, canvas.width, canvas.height);
         context.strokeStyle = "#BAB196";
 
         if (mouseOver && mouseMoved) {
@@ -10717,8 +10706,8 @@ var _default = /*#__PURE__*/function (_Controller) {
 
         for (var _i2 = 0; _i2 < gridLength; _i2 += 1) {
           for (var _j2 = 0; _j2 < gridLength; _j2 += 1) {
-            var sign = signs[_i2][_j2];
-            sign.draw(context);
+            var dot = dots[_i2][_j2];
+            dot.draw(context);
           }
         }
       }
@@ -10748,10 +10737,10 @@ var _default = /*#__PURE__*/function (_Controller) {
 
       for (var i = 0; i < gridLength; i += 1) {
         for (var j = 0; j < gridLength; j += 1) {
-          var sign = signs[i][j];
+          var dot = dots[i][j];
 
           if (!mouseOver) {
-            gsap__WEBPACK_IMPORTED_MODULE_7__["gsap"].to(sign, {
+            gsap__WEBPACK_IMPORTED_MODULE_7__["gsap"].to(dot, {
               duration: 0.3,
               x: 0,
               y: 0,
@@ -10760,30 +10749,6 @@ var _default = /*#__PURE__*/function (_Controller) {
           }
         }
       }
-    }
-  }, {
-    key: "resizeCanvas",
-    value: function resizeCanvas(event) {
-      if (!windowResizeDebouncing) {
-        setTimeout(function () {
-          // c.width = window.innerWidth;
-          // c.height = window.innerHeight;
-          for (var i = 0; i < gridLength; i += 1) {
-            for (var j = 0; j < gridLength; j += 1) {
-              var min = Math.min(c.width, c.height);
-              var sign = signs[i][j];
-              sign.left = c.width / (gridLength + 1) * (i + 1);
-              sign.top = c.height / (gridLength + 1) * (j + 1);
-              sign.width = min / 100;
-              sign.height = min / 100;
-            }
-          }
-
-          windowResizeDebouncing = null;
-        }, 250);
-      }
-
-      windowResizeDebouncing = event;
     }
   }]);
 
@@ -10844,11 +10809,6 @@ var _default = /*#__PURE__*/function (_Controller) {
   }
 
   _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(_default, [{
-    key: "connect",
-    value: function connect() {
-      console.log("cursor controller is connected");
-    }
-  }, {
     key: "onMouseMove",
     value: function onMouseMove(event) {
       gsap__WEBPACK_IMPORTED_MODULE_7__["gsap"].to(this.bigTarget, {
@@ -10960,13 +10920,8 @@ function animeText(button) {
 }
 
 function animeWrapper(button) {
-  if (button.dataset.project === "infamous") {
-    button.parentElement.parentElement.parentElement.classList.toggle("project__infamous-wrapper--animated-in");
-    button.parentElement.parentElement.parentElement.classList.toggle("project__infamous-wrapper--animated-out");
-  } else if (button.dataset.project === "portfolio") {
-    button.parentElement.parentElement.parentElement.classList.toggle("project__portfolio-wrapper--animated-in");
-    button.parentElement.parentElement.parentElement.classList.toggle("project__portfolio-wrapper--animated-out");
-  }
+  button.parentElement.parentElement.parentElement.classList.toggle("project__".concat(button.dataset.project, "-wrapper--animated-in"));
+  button.parentElement.parentElement.parentElement.classList.toggle("project__".concat(button.dataset.project, "-wrapper--animated-out"));
 }
 
 var _default = /*#__PURE__*/function (_Controller) {
@@ -10981,11 +10936,6 @@ var _default = /*#__PURE__*/function (_Controller) {
   }
 
   _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(_default, [{
-    key: "connect",
-    value: function connect() {
-      console.log("plus controller is connected");
-    }
-  }, {
     key: "animeDescription",
     value: function animeDescription(event) {
       if (event.currentTarget.classList.contains("project__icon-path--plus")) {
@@ -11056,11 +11006,6 @@ var _default = /*#__PURE__*/function (_Controller) {
   }
 
   _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(_default, [{
-    key: "connect",
-    value: function connect() {
-      console.log("title controller is connected");
-    }
-  }, {
     key: "motionFirstPair",
     value: function motionFirstPair(event) {
       var scrollTop = document.documentElement.scrollTop * 0.1;
@@ -11081,23 +11026,7 @@ var _default = /*#__PURE__*/function (_Controller) {
         translateX: scrollTop,
         delay: 1
       });
-    } // motionFirstShadow() {
-    //   const scrollTop = document.documentElement.scrollTop * 0.2;
-    //   anime({
-    //     targets: '.titles__shadow1',
-    //     translateX: -scrollTop,
-    //     delay: 2
-    //   });
-    // }
-    // motionSecondShadow() {
-    //   const scrollTop = document.documentElement.scrollTop * 0.2;
-    //   anime({
-    //     targets: '.titles__shadow2',
-    //     translateX: scrollTop,
-    //     delay: 1
-    //   });
-    // }
-
+    }
   }]);
 
   return _default;

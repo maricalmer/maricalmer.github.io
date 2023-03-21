@@ -54,8 +54,8 @@
               !
             </p>
           </div>
-          <canvas id="canvas" class="presentation__canvas" width="500px" height="500px" data-controller="canvas"
-            data-action="resize@window->canvas#resizeCanvas touchmove->canvas#mouseMove touchstart->canvas#touchStart touchend->canvas#mouseOverFalse mousemove->canvas#mouseMove mouseenter->canvas#mouseOverTrue mouseleave->canvas#mouseOverFalse">
+          <canvas class="presentation__canvas" width="500px" height="500px" data-controller="canvas"
+            data-action="touchmove->canvas#mouseMove touchstart->canvas#touchStart touchend->canvas#mouseOverFalse mousemove->canvas#mouseMove mouseenter->canvas#mouseOverTrue mouseleave->canvas#mouseOverFalse">
           </canvas>
           <svg class="presentation__arrow" xmlns="http://www.w3.org/2000/svg" width="67" height="67" viewBox="0 0 67 67" data-controller="arrow" data-action="scroll@window->arrow#toggleArrow">
             <path class="presentation__arrow-path" d="M28 44L9.5 25.5L1.5 33.5L33.5 65.5L65.5 33.5L57.5 25.5L39 44V1H28V44Z"/>
@@ -106,7 +106,7 @@
               <p class="project__description project__description--animated-out" data-plus-target="text">
                 Current webpage. Static portfolio website hosted on Github Pages
                 <br><br>
-                Stack: HTML, CSS, JavaScript
+                Stack: HTML, CSS, JavaScript, Stimulus
                 <br><br>
                 More on <a href="https://github.com/maricalmer/maricalmer.github.io" target="_blank"
                   class="project__description project__description--link" data-cursor-target="hoverable"
@@ -140,7 +140,7 @@
               <p class="project__description">
                 Current webpage. Static portfolio website hosted on Github Pages
                 <br><br>
-                Stack: HTML, CSS, JavaScript
+                Stack: HTML, CSS, JavaScript, Stimulus
                 <br><br>
                 More on <a href="https://github.com/maricalmer/maricalmer.github.io" target="_blank"
                   class="project__description project__description--link" data-cursor-target="hoverable"

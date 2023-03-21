@@ -1,14 +1,13 @@
 import { Controller } from "@hotwired/stimulus";
 import { gsap } from "gsap";
 
-const signs = [];
+const dots = [];
 const mouse = { x: 0, y: 0 };
 const gridLength = 15;
 let mouseMoved = false;
 let mouseOver = false;
-const c = document.getElementById("canvas");
-const context = c.getContext("2d");
-let windowResizeDebouncing = null;
+const canvas = document.querySelector("canvas");
+const context = canvas.getContext("2d");
 let mouseMoveDebouncing = null;
 
 function registerCursorMove(event) {
@@ -17,7 +16,7 @@ function registerCursorMove(event) {
       if (event.targetTouches && event.targetTouches[0]) {
         event = event.targetTouches[0];
       }
-      const rect = c.getBoundingClientRect();
+      const rect = canvas.getBoundingClientRect();
       mouse.x = event.clientX - rect.left;
       mouse.y = event.clientY - rect.top;
       mouseMoved = true;
@@ -29,7 +28,7 @@ function registerCursorMove(event) {
 
 export default class extends Controller {
   connect() {
-    class Plus {
+    class Dot {
       constructor() {
         this.x = 0;
         this.y = 0;
@@ -37,14 +36,14 @@ export default class extends Controller {
         this.left = 0;
         this.top = 0;
 
-        this.width = 0;
-        this.height = 0;
+        this.width = 1;
+        this.height = 1;
 
         this.scale = 1;
       }
     }
 
-    Plus.prototype.draw = function drawing() {
+    Dot.prototype.draw = function drawing() {
       context.save();
       context.beginPath();
       context.setTransform(
@@ -66,14 +65,11 @@ export default class extends Controller {
     };
 
     for (let i = 0; i < gridLength; i += 1) {
-      signs[i] = [];
+      dots[i] = [];
       for (let j = 0; j < gridLength; j += 1) {
-        const min = Math.min(c.width, c.height);
-        signs[i][j] = new Plus();
-        signs[i][j].left = c.width / (gridLength + 1) * (i + 1);
-        signs[i][j].top = c.height / (gridLength + 1) * (j + 1);
-        signs[i][j].width = 1;
-        signs[i][j].height = 1;
+        dots[i][j] = new Dot();
+        dots[i][j].left = canvas.width / (gridLength + 1) * (i + 1);
+        dots[i][j].top = canvas.height / (gridLength + 1) * (j + 1);
       }
     }
 
@@ -86,20 +82,20 @@ export default class extends Controller {
     function calculateIconPosition() {
       for (let i = 0; i < gridLength; i += 1) {
         for (let j = 0; j < gridLength; j += 1) {
-          const sign = signs[i][j];
-          let hyp = Math.min(c.width, c.height) / (gridLength + 1) / 2;
-          const d = dist([sign.left, sign.top], [mouse.x, mouse.y]);
-          const ax = mouse.x - sign.left;
-          const ay = mouse.y - sign.top;
+          const dot = dots[i][j];
+          let hyp = Math.min(canvas.width, canvas.height) / (gridLength + 1) / 2;
+          const d = dist([dot.left, dot.top], [mouse.x, mouse.y]);
+          const ax = mouse.x - dot.left;
+          const ay = mouse.y - dot.top;
           const angle = Math.atan2(ay, ax);
-          if (d < hyp + sign.width) {
+          if (d < hyp + dot.width) {
             hyp = d;
-            gsap.to(sign, { duration: 0.3, scale: 2 });
+            gsap.to(dot, { duration: 0.3, scale: 2 });
           } else {
-            gsap.to(sign, { duration: 0.3, scale: 1 });
+            gsap.to(dot, { duration: 0.3, scale: 1 });
           }
 
-          gsap.to(sign, {
+          gsap.to(dot, {
             duration: 0.3,
             x: Math.cos(angle) * hyp,
             y: Math.sin(angle) * hyp
@@ -109,7 +105,7 @@ export default class extends Controller {
     }
 
     function draw() {
-      context.clearRect(0, 0, c.width, c.height);
+      context.clearRect(0, 0, canvas.width, canvas.height);
       context.strokeStyle = "#BAB196";
 
       if (mouseOver && mouseMoved) {
@@ -119,8 +115,8 @@ export default class extends Controller {
 
       for (let i = 0; i < gridLength; i += 1) {
         for (let j = 0; j < gridLength; j += 1) {
-          const sign = signs[i][j];
-          sign.draw(context);
+          const dot = dots[i][j];
+          dot.draw(context);
         }
       }
     }
@@ -144,9 +140,9 @@ export default class extends Controller {
     mouseOver = false;
     for (let i = 0; i < gridLength; i += 1) {
       for (let j = 0; j < gridLength; j += 1) {
-        const sign = signs[i][j];
+        const dot = dots[i][j];
         if (!mouseOver) {
-          gsap.to(sign, {
+          gsap.to(dot, {
             duration: 0.3,
             x: 0,
             y: 0,
@@ -155,24 +151,5 @@ export default class extends Controller {
         }
       }
     }
-  }
-
-  resizeCanvas(event) {
-    if (!windowResizeDebouncing) {
-      setTimeout(() => {
-        for (let i = 0; i < gridLength; i += 1) {
-          for (let j = 0; j < gridLength; j += 1) {
-            const min = Math.min(c.width, c.height);
-            const sign = signs[i][j];
-            sign.left = c.width / (gridLength + 1) * (i + 1);
-            sign.top = c.height / (gridLength + 1) * (j + 1);
-            sign.width = min / 100;
-            sign.height = min / 100;
-          }
-        }
-        windowResizeDebouncing = null;
-      }, 250);
-    }
-    windowResizeDebouncing = event;
   }
 }
