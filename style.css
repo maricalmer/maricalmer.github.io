@@ -536,7 +536,6 @@ circle {
 }
 
 .project__icon-path--minus:hover {
-  /* fill: #C38212; */
   fill: #b27410;
   animation: none;
   stroke-dashoffset: 0;
