@@ -1,0 +1,76 @@
+.titles__container {
+  position: sticky;
+  height: 100vh;
+  width: 190px;
+  top: 0;
+}
+
+.titles__position {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.titles__wrapper {
+  transform: rotate(-90deg);
+  transform-origin: top left;
+  position: absolute;
+  bottom: 100px;
+}
+
+.titles__pair {
+  font-family: 'Archivo Black', sans-serif;
+  font-weight: 400;
+  font-size: 10vh;
+  margin: 0;
+  color: #b27410;
+}
+
+.titles__pair--first {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.titles__pair--second {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.titles__title1 {
+  position: absolute;
+  top: 0;
+}
+
+.titles__title2 {
+  position: absolute;
+  top: 65px;
+  left: 5px;
+  white-space: nowrap;
+}
+
+.titles__shadow1 {
+  color: transparent;
+  position: absolute;
+  top: 0;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 1px #F0D967;
+  opacity: .25;
+  z-index: -1;
+  will-change: transform;
+  white-space: nowrap;
+}
+
+.titles__shadow2 {
+  color: transparent;
+  position: absolute;
+  top: 65px;
+  left: 5px;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 1px #F0D967;
+  opacity: .25;
+  z-index: -1;
+  will-change: transform;
+  white-space: nowrap;
+}

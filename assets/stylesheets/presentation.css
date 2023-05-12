@@ -1,0 +1,150 @@
+.content__container {
+  height: fit-content;
+  width: 100%;
+  overflow: hidden;
+}
+
+.social__container {
+  width: fit-content;
+  height: fit-content;
+  font-size: 0.9rem;
+}
+
+.social__text {
+  position: fixed;
+  color: #b27410;
+  opacity: 0.6;
+  cursor: none;
+}
+
+.social__text--github {
+  top: 10px;
+  right: 25px;
+  text-decoration: none;
+  z-index: 1;
+}
+
+.social__text--linkedin {
+  top: 37px;
+  right: 30px;
+  transform: rotate(270deg);
+  transform-origin: top right;
+  text-decoration: none;
+  z-index: 1;
+}
+
+.social__text--github:hover,
+.social__text--linkedin:hover {
+  color: #152218;
+  box-shadow: inset 0 -30px 0 #b27410;
+}
+
+.presentation__container {
+  position: relative;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  height: 100vh;
+  width: 100%;
+}
+
+.presentation__text-wrapper {
+  margin: 0 auto;
+  width: 50vw;
+  position: relative;
+  top: 17vh;
+}
+
+.presentation__text {
+  font-size: 4vw;
+  text-align: justify;
+}
+
+.presentation__text--link {
+  color: #BAB196;
+  cursor: none;
+  transition: box-shadow .3s, text-decoration .3s, color .3s;
+}
+
+.presentation__text--link:hover {
+  color: #152218;
+  box-shadow: inset 0 -30px 0 #BAB196, 0 2px 0 #BAB196;
+  text-decoration: none;
+}
+
+.presentation__canvas {
+  display: none;
+  touch-action: none;
+  position: absolute;
+  bottom: 150px;
+  left: 250px;
+  z-index: 1;
+}
+
+.presentation__arrow {
+  position: fixed;
+  bottom: 30px;
+  right: 20px;
+  -webkit-animation: bounceandfade 4s ease-in-out infinite;
+  -moz-animation: bounceandfade 4s ease-in-out infinite;
+  animation: bounceandfade 4s ease-in-out infinite;
+}
+
+.presentation__arrow-path {
+  fill: transparent;
+  stroke-width: 0px;
+  stroke: #425A3D;
+}
+
+.presentation__arrow--hidden {
+  display: none;
+}
+
+@-webkit-keyframes bounceandfade {
+  0% {
+    -webkit-transform: translate(0, -20px);
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  100% {
+    -webkit-transform: translate(0, 20px);
+    opacity: 0;
+  }
+}
+
+@-moz-keyframes bounceandfade {
+  0% {
+    -moz-transform: translate(0, -20px);
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  100% {
+    -moz-transform: translate(0, 20px);
+    opacity: 0;
+  }
+}
+
+@keyframes bounceandfade {
+  0% {
+    transform: translate(0, -20px);
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  100% {
+    transform: translate(0, 20px);
+    opacity: 0;
+  }
+}
