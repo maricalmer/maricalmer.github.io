@@ -534,7 +534,7 @@ circle {
   }
 }
 
-.project__portfolio-wrapper--animated-out {
+.project__weather-wrapper--animated-out {
   height: 85px;
   -webkit-animation-duration: 0.5s;
   animation-duration: 0.5s;
