@@ -276,6 +276,10 @@ circle {
   min-height: 320px;
 }
 
+.project__container--weather {
+  min-height: 320px;
+}
+
 .project__container--portfolio {
   min-height: 270px;
 }
