@@ -496,6 +496,82 @@ circle {
   }
 }
 
+.project__weather-wrapper--animated-in {
+  height: 278px;
+  -webkit-animation-duration: 0.5s;
+  animation-duration: 0.5s;
+  -webkit-animation-name: fadeindownborderweather;
+  animation-name: fadeindownborderweather;
+}
+
+@-webkit-keyframes fadeindownborderweather {
+  0% {
+    height: 85px;
+  }
+
+  100% {
+    height: 278px;
+  }
+}
+
+@-moz-keyframes fadeindownborderweather {
+  0% {
+    height: 85px;
+  }
+
+  100% {
+    height: 278px;
+  }
+}
+
+@keyframes fadeindownborderweather {
+  0% {
+    height: 85px;
+  }
+
+  100% {
+    height: 278px;
+  }
+}
+
+.project__portfolio-wrapper--animated-out {
+  height: 85px;
+  -webkit-animation-duration: 0.5s;
+  animation-duration: 0.5s;
+  -webkit-animation-name: fadeinupborderweather;
+  animation-name: fadeinupborderweather;
+}
+
+@-webkit-keyframes fadeinupborderweather {
+  0% {
+    height: 278px;
+  }
+
+  100% {
+    height: 85px;
+  }
+}
+
+@-moz-keyframes fadeinupborderweather {
+  0% {
+    height: 278px;
+  }
+
+  100% {
+    height: 85px;
+  }
+}
+
+@keyframes fadeinupborderweather {
+  0% {
+    height: 278px;
+  }
+
+  100% {
+    height: 85px;
+  }
+}
+
 .project__title-wrapper {
   display: flex;
   align-items: center;
