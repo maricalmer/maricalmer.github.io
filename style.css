@@ -2,6 +2,7 @@
 @import "assets/stylesheets/main.css";
 @import "assets/stylesheets/presentation.css";
 @import "assets/stylesheets/projects.css";
+@import "assets/stylesheets/titles.css";
 
 /* body {
   background-color: #091409;
@@ -38,27 +39,27 @@ circle {
   display: flex;
 } */
 
-.titles__container {
+/* .titles__container {
   position: sticky;
   height: 100vh;
   width: 190px;
   top: 0;
-}
+} */
 
-.titles__position {
+/* .titles__position {
   position: relative;
   width: 100%;
   height: 100%;
-}
+} */
 
-.titles__wrapper {
+/* .titles__wrapper {
   transform: rotate(-90deg);
   transform-origin: top left;
   position: absolute;
   bottom: 100px;
-}
+} */
 
-.titles__pair {
+/* .titles__pair {
   font-family: 'Archivo Black', sans-serif;
   font-weight: 400;
   font-size: 10vh;
@@ -76,9 +77,9 @@ circle {
   position: absolute;
   bottom: 0;
   left: 0;
-}
+} */
 
-.titles__title1 {
+/* .titles__title1 {
   position: absolute;
   top: 0;
 }
@@ -113,7 +114,7 @@ circle {
   z-index: -1;
   will-change: transform;
   white-space: nowrap;
-}
+} */
 
 /* .content__container {
   height: fit-content;
@@ -808,13 +809,13 @@ circle {
     font-size: 1.1rem;
     line-height: 27px;
   } */
-  .titles__container {
+  /* .titles__container {
     width: 250px;
-  }
-  .titles__wrapper {
+  } */
+  /* .titles__wrapper {
     bottom: 30px;
-  }
-  .titles__pair {
+  } */
+  /* .titles__pair {
     font-size: 10vh;
   }
   .titles__title2 {
@@ -822,7 +823,7 @@ circle {
   }
   .titles__shadow2 {
     top: 130px;
-  }
+  } */
 }
 
 /* @media(min-width: 920px) {
@@ -832,9 +833,10 @@ circle {
 } */
 
 @media(min-width: 1090px) {
-  .titles__pair {
-      font-size: 14vh;
-    }
+  /* .titles__pair {
+    font-size: 14vh;
+  } */
+
   /* .presentation__text-wrapper {
     position: absolute;
     bottom: 32%;
@@ -872,12 +874,14 @@ circle {
   }
 } */
 @media(min-width: 1800px) {
-  .titles__title2 {
+  /* .titles__title2 {
     top: 135px;
   }
+
   .titles__shadow2 {
     top: 135px;
-  }
+  } */
+
   /* .presentation__canvas {
     bottom: -100px;
   } */

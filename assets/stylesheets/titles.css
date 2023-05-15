@@ -74,3 +74,41 @@
   will-change: transform;
   white-space: nowrap;
 }
+
+@media(min-width: 720px) {
+  .titles__container {
+    width: 250px;
+  }
+
+  .titles__wrapper {
+    bottom: 30px;
+  }
+
+  .titles__pair {
+    font-size: 10vh;
+  }
+
+  .titles__title2 {
+    top: 130px;
+  }
+
+  .titles__shadow2 {
+    top: 130px;
+  }
+}
+
+@media(min-width: 1090px) {
+  .titles__pair {
+    font-size: 14vh;
+  }
+}
+
+@media(min-width: 1800px) {
+  .titles__title2 {
+    top: 135px;
+  }
+
+  .titles__shadow2 {
+    top: 135px;
+  }
+}
