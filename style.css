@@ -1,4 +1,7 @@
-body {
+@import "assets/stylesheets/cursor.css";
+@import "assets/stylesheets/main.css";
+
+/* body {
   background-color: #091409;
   margin: 0;
   color: #BAB196;
@@ -9,9 +12,9 @@ body {
 
 body::-webkit-scrollbar {
   display: none;
-}
+} */
 
-.cursor {
+/* .cursor {
   pointer-events: none;
   display: none;
 }
@@ -26,12 +29,12 @@ body::-webkit-scrollbar {
 
 circle {
   fill: #f7f8fa;
-}
+} */
 
-.container {
+/* .container {
   height: 100%;
   display: flex;
-}
+} */
 
 .titles__container {
   position: sticky;
@@ -768,12 +771,12 @@ circle {
 
 
 @media(min-width: 720px) {
-  body {
+  /* body {
     cursor: none;
-  }
-  .cursor {
+  } */
+  /* .cursor {
     display: block;
-  }
+  } */
   .content__container {
     width: calc(100vw - 250px);
   }

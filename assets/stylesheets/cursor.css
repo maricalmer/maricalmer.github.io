@@ -14,3 +14,9 @@
 circle {
   fill: #f7f8fa;
 }
+
+@media(min-width: 720px) {
+  .cursor {
+    display: block;
+  }
+}
