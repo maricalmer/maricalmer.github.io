@@ -15,6 +15,10 @@
   min-height: 320px;
 }
 
+.project__container--plant {
+  min-height: 350px;
+}
+
 .project__container--weather {
   min-height: 320px;
 }
@@ -156,6 +160,82 @@
 @keyframes fadeinupborderinfamous {
   0% {
     height: 278px;
+  }
+
+  100% {
+    height: 85px;
+  }
+}
+
+.project__plant-wrapper--animated-in {
+  height: 323px;
+  -webkit-animation-duration: 0.5s;
+  animation-duration: 0.5s;
+  -webkit-animation-name: fadeindownborderplant;
+  animation-name: fadeindownborderplant;
+}
+
+@-webkit-keyframes fadeindownborderplant {
+  0% {
+    height: 85px;
+  }
+
+  100% {
+    height: 323px;
+  }
+}
+
+@-moz-keyframes fadeindownborderplant {
+  0% {
+    height: 85px;
+  }
+
+  100% {
+    height: 323px;
+  }
+}
+
+@keyframes fadeindownborderplant {
+  0% {
+    height: 85px;
+  }
+
+  100% {
+    height: 323px;
+  }
+}
+
+.project__plant-wrapper--animated-out {
+  height: 85px;
+  -webkit-animation-duration: 0.5s;
+  animation-duration: 0.5s;
+  -webkit-animation-name: fadeinupborderplant;
+  animation-name: fadeinupborderplant;
+}
+
+@-webkit-keyframes fadeinupborderplant {
+  0% {
+    height: 323px;
+  }
+
+  100% {
+    height: 85px;
+  }
+}
+
+@-moz-keyframes fadeinupborderplant {
+  0% {
+    height: 323px;
+  }
+
+  100% {
+    height: 85px;
+  }
+}
+
+@keyframes fadeinupborderplant {
+  0% {
+    height: 323px;
   }
 
   100% {
