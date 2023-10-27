@@ -23,6 +23,10 @@
   min-height: 320px;
 }
 
+.project__container--capitals {
+  min-height: 320px;
+}
+
 .project__container--portfolio {
   min-height: 270px;
 }
@@ -386,6 +390,44 @@
 }
 
 @keyframes fadeinupborderweather {
+  0% {
+    height: 278px;
+  }
+
+  100% {
+    height: 85px;
+  }
+}
+
+.project__capitals-wrapper--animated-out {
+  height: 85px;
+  -webkit-animation-duration: 0.5s;
+  animation-duration: 0.5s;
+  -webkit-animation-name: fadeinupbordercapitals;
+  animation-name: fadeinupbordercapitals;
+}
+
+@-webkit-keyframes fadeinupbordercapitals {
+  0% {
+    height: 278px;
+  }
+
+  100% {
+    height: 85px;
+  }
+}
+
+@-moz-keyframes fadeinupbordercapitals {
+  0% {
+    height: 278px;
+  }
+
+  100% {
+    height: 85px;
+  }
+}
+
+@keyframes fadeinupbordercapitals {
   0% {
     height: 278px;
   }
