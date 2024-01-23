@@ -252,7 +252,7 @@
 }
 
 .project__studio-wrapper--animated-in {
-  height: 85px;
+  height: 234px;
   -webkit-animation-duration: 0.5s;
   animation-duration: 0.5s;
   -webkit-animation-name: fadeindownborderstudio;
@@ -290,7 +290,7 @@
 }
 
 .project__studio-wrapper--animated-out {
-  height: 234px;
+  height: 85px;
   -webkit-animation-duration: 0.5s;
   animation-duration: 0.5s;
   -webkit-animation-name: fadeinupborderstudio;
@@ -328,7 +328,7 @@
 }
 
 .project__portfolio-wrapper--animated-in {
-  height: 85px;
+  height: 234px;
   -webkit-animation-duration: 0.5s;
   animation-duration: 0.5s;
   -webkit-animation-name: fadeindownborderportfolio;
