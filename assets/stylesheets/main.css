@@ -5,6 +5,7 @@ body {
   font-family: 'IBM Plex Mono', monospace;
   -ms-overflow-style: none;
   scrollbar-width: none;
+  padding-bottom: 30vh;
 }
 
 body::-webkit-scrollbar {
