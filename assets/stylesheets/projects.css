@@ -32,7 +32,7 @@
 }
 
 .project__container--studio {
-  min-height: 270px;
+  min-height: 290px;
 }
 
 .project__container--desktop {
@@ -252,7 +252,7 @@
 }
 
 .project__studio-wrapper--animated-in {
-  height: 234px;
+  height: 260px;
   -webkit-animation-duration: 0.5s;
   animation-duration: 0.5s;
   -webkit-animation-name: fadeindownborderstudio;
@@ -265,7 +265,7 @@
   }
 
   100% {
-    height: 234px;
+    height: 260px;
   }
 }
 
@@ -275,7 +275,7 @@
   }
 
   100% {
-    height: 234px;
+    height: 260px;
   }
 }
 
@@ -285,7 +285,7 @@
   }
 
   100% {
-    height: 234px;
+    height: 260px;
   }
 }
 
@@ -299,7 +299,7 @@
 
 @-webkit-keyframes fadeinupborderstudio {
   0% {
-    height: 234px;
+    height: 260px;
   }
 
   100% {
@@ -309,7 +309,7 @@
 
 @-moz-keyframes fadeinupborderstudio {
   0% {
-    height: 234px;
+    height: 260px;
   }
 
   100% {
@@ -319,7 +319,7 @@
 
 @keyframes fadeinupborderstudio {
   0% {
-    height: 234px;
+    height: 260px;
   }
 
   100% {
