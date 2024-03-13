@@ -176,7 +176,7 @@
 }
 
 .project__plant-wrapper--animated-in {
-  height: 323px;
+  height: 349px;
   -webkit-animation-duration: 0.5s;
   animation-duration: 0.5s;
   -webkit-animation-name: fadeindownborderplant;
@@ -189,7 +189,7 @@
   }
 
   100% {
-    height: 323px;
+    height: 349px;
   }
 }
 
@@ -199,7 +199,7 @@
   }
 
   100% {
-    height: 323px;
+    height: 349px;
   }
 }
 
@@ -209,7 +209,7 @@
   }
 
   100% {
-    height: 323px;
+    height: 349px;
   }
 }
 
@@ -223,7 +223,7 @@
 
 @-webkit-keyframes fadeinupborderplant {
   0% {
-    height: 323px;
+    height: 349px;
   }
 
   100% {
@@ -233,7 +233,7 @@
 
 @-moz-keyframes fadeinupborderplant {
   0% {
-    height: 323px;
+    height: 349px;
   }
 
   100% {
@@ -243,7 +243,7 @@
 
 @keyframes fadeinupborderplant {
   0% {
-    height: 323px;
+    height: 349px;
   }
 
   100% {
